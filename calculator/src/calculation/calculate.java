@@ -18,30 +18,36 @@ public class calculate {
     private void parseArray(char symbol) {
         switch (symbol) {
             case 'p':
-                System.out.println("parenthesis");
+                findParenthesis();
                 break;
             case 'e':
-                System.out.println("exponents");
                 doExponents();
                 break;
             case 'm':
-                System.out.println("multiplication");
                 doMultiplication();
                 break;
             case 'd':
-                System.out.println("division");
                 doDivision();
                 break;
             case 'a':
-                System.out.println("addition");
                 doAddition();
                 break;
             case 's':
-                System.out.println("subtraction");
                 doSubtraction();
                 break;
             default:
                 break;
+        }
+    }
+
+    private void findParenthesis(){
+        boolean repeat = true;
+        while(repeat == true){
+            for(String x:inputArray){
+                if (x.compareTo("(") == 0){
+
+                }
+            }
         }
     }
 
