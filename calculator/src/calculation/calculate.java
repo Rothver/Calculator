@@ -42,14 +42,24 @@ public class calculate {
 
     private void findParenthesis(){
         boolean repeat = true;
+        int startLoc = -1;
+        int endLoc = -1;
+
         while(repeat == true){
-            for(String x:inputArray){
-                if (x.compareTo("(") == 0){
+            for(int i = 0; i < inputArray.length; i++){
+                if (inputArray[i].compareTo("(") == 0){
+                    startLoc = i;
+                } else if (inputArray[i].compareTo(")") == 0){
+                    endLoc = i;
+                }
+                if (startLoc > -1 && endLoc > -1){
 
                 }
             }
         }
     }
+
+    
 
     private void doExponents(){
         boolean repeat = true;
