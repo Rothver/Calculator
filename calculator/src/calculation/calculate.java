@@ -1,5 +1,7 @@
 package calculation;
 
+import java.util.Arrays;
+
 public class calculate {
     String[] globalInArray;
     char[] pemdasArray = {'p','e','m','d','a','s'};
@@ -9,171 +11,167 @@ public class calculate {
     }
 
     public int startSolution() {
-        findSolution(globalInArray);
+        globalInArray = findSolution(globalInArray);
         return Integer.valueOf(globalInArray[0]);
     }
 
-    private void findSolution(String[] inputArray){
+    private String[] findSolution(String[] inputArray){
         for (int i = 1; i < pemdasArray.length; i++){
-            parseArray(pemdasArray[i],inputArray);
+            inputArray = parseArray(pemdasArray[i],inputArray);
         }
+        return inputArray;
     }
 
-    private void parseArray(char symbol, String[] inputArray) {
+    private String[] parseArray(char symbol, String[] inputArray) {
         switch (symbol) {
             case 'p':
-                //findParenthesis();
+                inputArray = findParenthesis(inputArray);
                 break;
             case 'e':
-                doExponents();
+                inputArray = doExponents(inputArray);
                 break;
             case 'm':
-                doMultiplication();
+                inputArray = doMultiplication(inputArray);
                 break;
             case 'd':
-                doDivision();
+                inputArray = doDivision(inputArray);
                 break;
             case 'a':
-                doAddition();
+                inputArray = doAddition(inputArray);
                 break;
             case 's':
-                doSubtraction();
+                inputArray = doSubtraction(inputArray);
                 break;
             default:
                 break;
         }
+        return inputArray;
     }
 
-    private void findParenthesis(String[] inputArray){
+    private String[] findParenthesis(String[] inputArray){
         boolean repeat = true;
         int startLoc = -1;
         int endLoc = -1;
 
         while(repeat){
-            for(int i = 0; i < globalInArray.length; i++){
-                if (globalInArray[i].compareTo("(") == 0){
+            for(int i = 0; i < inputArray.length; i++){
+                if (inputArray[i].compareTo("(") == 0){
                     startLoc = i;
-                } else if (globalInArray[i].compareTo(")") == 0){
+                } else if (inputArray[i].compareTo(")") == 0){
                     endLoc = i;
+
+                    inputArray = findSolution(Arrays.copyOfRange(inputArray, startLoc, endLoc));
+                    break;
                 }
-                if (startLoc > -1 && endLoc > -1){
-                    int result;
-                    shortenInputArray(0, startLoc,endLoc-startLoc);
+
+                if (i == inputArray.length-1){
                     repeat = false;
                 }
             }
         }
+        return inputArray;
     }
 
     
 
-    private void doExponents(){
+    private String[] doExponents(String[] inputArray){
         boolean repeat = true;
         while(repeat){
-            for(int i = 0; i < globalInArray.length; i++){
-                if (globalInArray[i].compareTo("^")==0){
-                    int result = (int)Math.pow(Double.valueOf(globalInArray[i-1]),Double.valueOf(globalInArray[i+1]));
-                    shortenInputArray(result,i-1);
-                }
-                if (i == globalInArray.length-1){
-                    repeat = false;
-                }
-            }
-        }
-    }
-
-    private void doMultiplication(){
-        boolean repeat = true;
-        while(repeat){
-            for(int i = 0; i < globalInArray.length; i++){
-                if (globalInArray[i].compareTo("*")==0){
-                    int c = Integer.valueOf(globalInArray[i-1]) * Integer.valueOf(globalInArray[i+1]);
-                    shortenInputArray(c,i-1);
+            for(int i = 0; i < inputArray.length; i++){
+                if (inputArray[i].compareTo("^")==0){
+                    int result = (int)Math.pow(Double.valueOf(inputArray[i-1]),Double.valueOf(inputArray[i+1]));
+                    inputArray = shortenInputArray(inputArray, result,i-1);
                     break;
                 }
-                if (i == globalInArray.length-1){
+                if (i == inputArray.length-1){
                     repeat = false;
                 }
             }
         }
+        return inputArray;
     }
 
-    private void doDivision(){
+    private String[] doMultiplication(String[] inputArray){
         boolean repeat = true;
         while(repeat){
-            for(int i = 0; i < globalInArray.length; i++){
-                if (globalInArray[i].compareTo("/")==0){
-                    int c = Integer.valueOf(globalInArray[i-1]) / Integer.valueOf(globalInArray[i+1]);
-                    shortenInputArray(c,i-1);
+            for(int i = 0; i < inputArray.length; i++){
+                if (inputArray[i].compareTo("*")==0){
+                    int c = Integer.valueOf(inputArray[i-1]) * Integer.valueOf(inputArray[i+1]);
+                    inputArray = shortenInputArray(inputArray,c,i-1);
                     break;
                 }
-                if (i == globalInArray.length-1){
+                if (i == inputArray.length-1){
                     repeat = false;
                 }
             }
         }
+        return inputArray;
     }
 
-    private void doAddition(){
+    private String[] doDivision(String[] inputArray){
         boolean repeat = true;
         while(repeat){
-            for(int i = 0; i < globalInArray.length; i++){
-                if (globalInArray[i].compareTo("+")==0){
-                    int c = Integer.valueOf(globalInArray[i-1]) + Integer.valueOf(globalInArray[i+1]);
-                    shortenInputArray(c,i-1);
+            for(int i = 0; i < inputArray.length; i++){
+                if (inputArray[i].compareTo("/")==0){
+                    int c = Integer.valueOf(inputArray[i-1]) / Integer.valueOf(inputArray[i+1]);
+                    inputArray = shortenInputArray(inputArray,c,i-1);
                     break;
                 }
-                if (i == globalInArray.length-1){
+                if (i == inputArray.length-1){
                     repeat = false;
                 }
             }
         }
+        return inputArray;
     }
 
-    private void doSubtraction(){
+    private String[] doAddition(String[] inputArray){
         boolean repeat = true;
         while(repeat){
-            for(int i = 0; i < globalInArray.length; i++){
-                if (globalInArray[i].compareTo("-")==0){
-                    int c = Integer.valueOf(globalInArray[i-1]) - Integer.valueOf(globalInArray[i+1]);
-                    shortenInputArray(c,i-1);
+            for(int i = 0; i < inputArray.length; i++){
+                if (inputArray[i].compareTo("+")==0){
+                    int c = Integer.valueOf(inputArray[i-1]) + Integer.valueOf(inputArray[i+1]);
+                    inputArray = shortenInputArray(inputArray,c,i-1);
                     break;
                 }
-                if (i == globalInArray.length-1){
+                if (i == inputArray.length-1){
                     repeat = false;
                 }
             }
         }
+        return inputArray;
+    }
+
+    private String[] doSubtraction(String[] inputArray){
+        boolean repeat = true;
+        while(repeat){
+            for(int i = 0; i < inputArray.length; i++){
+                if (inputArray[i].compareTo("-")==0){
+                    int c = Integer.valueOf(inputArray[i-1]) - Integer.valueOf(inputArray[i+1]);
+                    shortenInputArray(inputArray,c,i-1);
+                    break;
+                }
+                if (i == inputArray.length-1){
+                    repeat = false;
+                }
+            }
+        }
+        return inputArray;
     }
 
 
-    private void shortenInputArray(int resultNumber, int replaceLocation){
-        String[] tempArray = new String[globalInArray.length-2];
+    private String[] shortenInputArray(String[] inputArray,int resultNumber, int replaceLocation){
+        String[] tempArray = new String[inputArray.length-2];
         int tempHold = 0;
         for (int i = 0; i < tempArray.length; i++){
             if (i == replaceLocation){
                 tempArray[i] = String.valueOf(resultNumber);
                 tempHold+=2;
             } else {
-                tempArray[i] = globalInArray[tempHold];
+                tempArray[i] = inputArray[tempHold];
                 tempHold++;
             }
         }
-        globalInArray = tempArray;
-    }
-
-    private void shortenInputArray(int resultNumber, int replaceLocation, int shortenAmount){
-        String[] tempArray = new String[globalInArray.length-shortenAmount];
-        int tempHold = 0;
-        for (int i = 0; i < tempArray.length; i++){
-            if (i == replaceLocation){
-                tempArray[i] = String.valueOf(resultNumber);
-                tempHold+=shortenAmount;
-            } else {
-                tempArray[i] = globalInArray[tempHold];
-                tempHold++;
-            }
-        }
-        globalInArray = tempArray;
+        return tempArray;
     }
 }
