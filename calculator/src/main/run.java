@@ -13,6 +13,6 @@ public class run {
 
     public static void main (String args[]){
         run start = new run();
-        System.out.println("final result: " + start.calculator.findSolution());
+        System.out.println("final result: " + start.calculator.startSolution());
     }
 }

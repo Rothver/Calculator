@@ -61,6 +61,7 @@ public class calculate {
                     endLoc = i;
 
                     inputArray = findSolution(Arrays.copyOfRange(inputArray, startLoc, endLoc));
+                    inputArray = shortenInputArray(inputArray, Integer.parseInt(inputArray[endLoc-1]), startLoc);
                     break;
                 }
 
@@ -173,5 +174,19 @@ public class calculate {
             }
         }
         return tempArray;
+    }
+
+    private String[] shortenInputArray(String[] inputArray,int resultNumber, int replaceLocation, int shortenAmount){
+        String[] tempArray = new String[inputArray.length-shortenAmount];
+        int tempHold = 0;
+        for (int i = 0; i < tempArray.length; i++){
+            if (i == replaceLocation){
+                tempArray[i] = String.valueOf(resultNumber);
+                tempHold+=shortenAmount;
+            } else {
+                tempArray[i] = inputArray[tempHold];
+            }
+        }
+        return inputArray;
     }
 }
