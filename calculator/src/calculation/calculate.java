@@ -16,7 +16,7 @@ public class calculate {
     }
 
     private String[] findSolution(String[] inputArray){
-        for (int i = 1; i < pemdasArray.length; i++){
+        for (int i = 0; i < pemdasArray.length; i++){
             inputArray = parseArray(pemdasArray[i],inputArray);
         }
         return inputArray;
@@ -60,8 +60,8 @@ public class calculate {
                 } else if (inputArray[i].compareTo(")") == 0){
                     endLoc = i;
 
-                    inputArray = findSolution(Arrays.copyOfRange(inputArray, startLoc, endLoc));
-                    inputArray = shortenInputArray(inputArray, Integer.parseInt(inputArray[endLoc-1]), startLoc);
+                    String temp = findSolution(Arrays.copyOfRange(inputArray, startLoc+1, endLoc))[0];
+                    inputArray = shortenInputArray(inputArray,Integer.valueOf(temp),startLoc,endLoc-startLoc);
                     break;
                 }
 
@@ -178,6 +178,7 @@ public class calculate {
 
     private String[] shortenInputArray(String[] inputArray,int resultNumber, int replaceLocation, int shortenAmount){
         String[] tempArray = new String[inputArray.length-shortenAmount];
+        shortenAmount++;
         int tempHold = 0;
         for (int i = 0; i < tempArray.length; i++){
             if (i == replaceLocation){
@@ -185,8 +186,10 @@ public class calculate {
                 tempHold+=shortenAmount;
             } else {
                 tempArray[i] = inputArray[tempHold];
+                tempHold++;
             }
         }
+        inputArray = tempArray;
         return inputArray;
     }
 }
