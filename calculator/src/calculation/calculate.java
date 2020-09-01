@@ -12,12 +12,12 @@ public class calculate {
 
     public int startSolution() {
         globalInArray = findSolution(globalInArray);
-        return Integer.valueOf(globalInArray[0]);
+        return Integer.parseInt(globalInArray[0]);
     }
 
     private String[] findSolution(String[] inputArray){
-        for (int i = 0; i < pemdasArray.length; i++){
-            inputArray = parseArray(pemdasArray[i],inputArray);
+        for (char c : pemdasArray) {
+            inputArray = parseArray(c, inputArray);
         }
         return inputArray;
     }
@@ -51,7 +51,7 @@ public class calculate {
     private String[] findParenthesis(String[] inputArray){
         boolean repeat = true;
         int startLoc = -1;
-        int endLoc = -1;
+        int endLoc;
 
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
@@ -61,7 +61,7 @@ public class calculate {
                     endLoc = i;
 
                     String temp = findSolution(Arrays.copyOfRange(inputArray, startLoc+1, endLoc))[0];
-                    inputArray = shortenInputArray(inputArray,Integer.valueOf(temp),startLoc,endLoc-startLoc);
+                    inputArray = shortenInputArray(inputArray,Integer.parseInt(temp),startLoc,endLoc-startLoc);
                     break;
                 }
 
@@ -80,7 +80,7 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("^")==0){
-                    int result = (int)Math.pow(Double.valueOf(inputArray[i-1]),Double.valueOf(inputArray[i+1]));
+                    int result = (int)Math.pow(Double.parseDouble(inputArray[i-1]),Double.parseDouble(inputArray[i+1]));
                     inputArray = shortenInputArray(inputArray, result,i-1);
                     break;
                 }
@@ -97,7 +97,7 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("*")==0){
-                    int c = Integer.valueOf(inputArray[i-1]) * Integer.valueOf(inputArray[i+1]);
+                    int c = Integer.parseInt(inputArray[i-1]) * Integer.parseInt(inputArray[i+1]);
                     inputArray = shortenInputArray(inputArray,c,i-1);
                     break;
                 }
@@ -114,7 +114,7 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("/")==0){
-                    int c = Integer.valueOf(inputArray[i-1]) / Integer.valueOf(inputArray[i+1]);
+                    int c = Integer.parseInt(inputArray[i-1]) / Integer.parseInt(inputArray[i+1]);
                     inputArray = shortenInputArray(inputArray,c,i-1);
                     break;
                 }
@@ -131,7 +131,7 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("+")==0){
-                    int c = Integer.valueOf(inputArray[i-1]) + Integer.valueOf(inputArray[i+1]);
+                    int c = Integer.parseInt(inputArray[i-1]) + Integer.parseInt(inputArray[i+1]);
                     inputArray = shortenInputArray(inputArray,c,i-1);
                     break;
                 }
@@ -148,8 +148,8 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("-")==0){
-                    int c = Integer.valueOf(inputArray[i-1]) - Integer.valueOf(inputArray[i+1]);
-                    shortenInputArray(inputArray,c,i-1);
+                    int c = Integer.parseInt(inputArray[i-1]) - Integer.parseInt(inputArray[i+1]);
+                    inputArray = shortenInputArray(inputArray,c,i-1);
                     break;
                 }
                 if (i == inputArray.length-1){
