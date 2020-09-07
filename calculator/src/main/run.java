@@ -8,7 +8,7 @@ public class run {
     calculate calculator;
 
     public run(){
-        calculator = new calculate("( 9 + 18 ) / 3 ^ 2");
+        calculator = new calculate("( ( 9 + 18 ) + 1 )");
     }
 
     public static void main (String args[]){

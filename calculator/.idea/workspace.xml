@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="870c987d-9c71-4389-8a6b-d27a0d75b07a" name="Default Changelist" comment="" />
+    <list default="true" id="870c987d-9c71-4389-8a6b-d27a0d75b07a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/calculator/META-INF/calculator.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/calculator/calculation/calculate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/calculator/calculation/calculate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/calculator/main/run.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/calculator/main/run.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/calculation/calculate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/calculation/calculate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/run.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +28,26 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="RunManager">
+    <configuration name="run" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.run" />
+      <module name="calculator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.run" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -35,9 +62,41 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="422" y="373" key="#Notifications" timestamp="1598982601349">
+    <state x="422" y="373" key="#Notifications" timestamp="1598983071022">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="422" y="373" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1598982601349" />
+    <state x="422" y="373" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1598983071022" />
+    <state width="1877" height="322" key="GridCell.Tab.0.bottom" timestamp="1599450387687">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="322" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387687" />
+    <state width="1877" height="322" key="GridCell.Tab.0.center" timestamp="1599450387687">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="322" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387687" />
+    <state width="1877" height="322" key="GridCell.Tab.0.left" timestamp="1599450387687">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="322" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387687" />
+    <state width="1877" height="322" key="GridCell.Tab.0.right" timestamp="1599450387687">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="322" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387687" />
+    <state width="1877" height="322" key="GridCell.Tab.1.bottom" timestamp="1599450387688">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="322" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387688" />
+    <state width="1877" height="322" key="GridCell.Tab.1.center" timestamp="1599450387688">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="322" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387688" />
+    <state width="1877" height="322" key="GridCell.Tab.1.left" timestamp="1599450387688">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="322" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387688" />
+    <state width="1877" height="322" key="GridCell.Tab.1.right" timestamp="1599450387688">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="322" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387688" />
   </component>
 </project>

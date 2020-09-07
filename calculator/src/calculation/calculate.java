@@ -192,4 +192,12 @@ public class calculate {
         inputArray = tempArray;
         return inputArray;
     }
+
+    private String printArray(String[] inputArray){
+        String returnString = "";
+        for (String x: inputArray){
+            returnString+=x;
+        }
+        return returnString;
+    }
 }
