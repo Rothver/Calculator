@@ -10,9 +10,9 @@ public class calculate {
         this.globalInArray = inputString.split(" ");
     }
 
-    public int startSolution() {
+    public String startSolution() {
         globalInArray = findSolution(globalInArray);
-        return Integer.parseInt(globalInArray[0]);
+        return printArray(globalInArray);
     }
 
     private String[] findSolution(String[] inputArray){
@@ -131,7 +131,23 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("+")==0){
-                    int c = Integer.parseInt(inputArray[i-1]) + Integer.parseInt(inputArray[i+1]);
+                    int tempLow = i;
+                    int tempHigh = i;
+
+                    while (!Character.isDigit(inputArray[tempLow].charAt(0))){
+                        tempLow--;
+                        if (tempLow < 0){
+                            return inputArray;
+                        }
+                    }
+                    while (!Character.isDigit(inputArray[tempHigh].charAt(0))){
+                        tempHigh++;
+                        if (tempHigh > inputArray.length){
+                            return inputArray;
+                        }
+                    }
+                    int c = Integer.parseInt(inputArray[tempLow]) + Integer.parseInt(inputArray[tempHigh]);
+                    System.out.println(c);
                     inputArray = shortenInputArray(inputArray,c,i-1);
                     break;
                 }
@@ -194,10 +210,10 @@ public class calculate {
     }
 
     private String printArray(String[] inputArray){
-        String returnString = "";
+        StringBuilder returnString = new StringBuilder();
         for (String x: inputArray){
-            returnString+=x;
+            returnString.append(x);
         }
-        return returnString;
+        return returnString.toString();
     }
 }

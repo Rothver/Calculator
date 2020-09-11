@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="870c987d-9c71-4389-8a6b-d27a0d75b07a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/calculator/META-INF/calculator.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/calculator/calculation/calculate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/calculator/calculation/calculate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/calculator/main/run.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/calculator/main/run.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/calculation/calculate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/calculation/calculate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/run.java" afterDir="false" />
     </list>
@@ -48,6 +45,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -66,37 +64,55 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="422" y="373" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1598983071022" />
-    <state width="1877" height="322" key="GridCell.Tab.0.bottom" timestamp="1599450387687">
+    <state x="163" y="246" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1599589356235">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387687" />
-    <state width="1877" height="322" key="GridCell.Tab.0.center" timestamp="1599450387687">
+    <state x="163" y="246" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599589356235" />
+    <state width="910" height="377" key="GridCell.Tab.0.bottom" timestamp="1599773540688">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387687" />
-    <state width="1877" height="322" key="GridCell.Tab.0.left" timestamp="1599450387687">
+    <state width="910" height="377" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599773540688" />
+    <state width="910" height="377" key="GridCell.Tab.0.center" timestamp="1599773540688">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387687" />
-    <state width="1877" height="322" key="GridCell.Tab.0.right" timestamp="1599450387687">
+    <state width="910" height="377" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599773540688" />
+    <state width="910" height="377" key="GridCell.Tab.0.left" timestamp="1599773540688">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387687" />
-    <state width="1877" height="322" key="GridCell.Tab.1.bottom" timestamp="1599450387688">
+    <state width="910" height="377" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599773540688" />
+    <state width="910" height="377" key="GridCell.Tab.0.right" timestamp="1599773540688">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387688" />
-    <state width="1877" height="322" key="GridCell.Tab.1.center" timestamp="1599450387688">
+    <state width="910" height="377" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599773540688" />
+    <state width="910" height="377" key="GridCell.Tab.1.bottom" timestamp="1599773540688">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387688" />
-    <state width="1877" height="322" key="GridCell.Tab.1.left" timestamp="1599450387688">
+    <state width="910" height="377" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599773540688" />
+    <state width="910" height="377" key="GridCell.Tab.1.center" timestamp="1599773540688">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387688" />
-    <state width="1877" height="322" key="GridCell.Tab.1.right" timestamp="1599450387688">
+    <state width="910" height="377" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599773540688" />
+    <state width="910" height="377" key="GridCell.Tab.1.left" timestamp="1599773540688">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="322" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599450387688" />
+    <state width="910" height="377" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599773540688" />
+    <state width="910" height="377" key="GridCell.Tab.1.right" timestamp="1599773540688">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="910" height="377" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599773540688" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/calculation/calculate.java</url>
+          <line>128</line>
+          <properties class="calculation.calculate" method="doAddition">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
