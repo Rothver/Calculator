@@ -81,7 +81,7 @@ public class calculate {
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("^")==0){
                     int result = (int)Math.pow(Double.parseDouble(inputArray[i-1]),Double.parseDouble(inputArray[i+1]));
-                    inputArray = shortenInputArray(inputArray, result,i-1);
+                    inputArray = shortenInputArray(inputArray, result,i-1,2,i,i+1);
                     break;
                 }
                 if (i == inputArray.length-1){
@@ -98,7 +98,7 @@ public class calculate {
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("*")==0){
                     int c = Integer.parseInt(inputArray[i-1]) * Integer.parseInt(inputArray[i+1]);
-                    inputArray = shortenInputArray(inputArray,c,i-1);
+                    inputArray = shortenInputArray(inputArray,c,i-1,2,i,i+1);
                     break;
                 }
                 if (i == inputArray.length-1){
@@ -115,7 +115,7 @@ public class calculate {
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("/")==0){
                     int c = Integer.parseInt(inputArray[i-1]) / Integer.parseInt(inputArray[i+1]);
-                    inputArray = shortenInputArray(inputArray,c,i-1);
+                    inputArray = shortenInputArray(inputArray,c,i-1,2,i,i+1);
                     break;
                 }
                 if (i == inputArray.length-1){
@@ -131,24 +131,12 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("+")==0){
-                    int tempLow = i;
-                    int tempHigh = i;
-
-                    while (!Character.isDigit(inputArray[tempLow].charAt(0))){
-                        tempLow--;
-                        if (tempLow < 0){
-                            return inputArray;
-                        }
+                    int highValue = i+1;
+                    while (!Character.isDigit(inputArray[highValue].charAt(0))){
+                        highValue++;
                     }
-                    while (!Character.isDigit(inputArray[tempHigh].charAt(0))){
-                        tempHigh++;
-                        if (tempHigh > inputArray.length){
-                            return inputArray;
-                        }
-                    }
-                    int c = Integer.parseInt(inputArray[tempLow]) + Integer.parseInt(inputArray[tempHigh]);
-                    System.out.println(c);
-                    inputArray = shortenInputArray(inputArray,c,i-1);
+                    int c = Integer.parseInt(inputArray[i-1]) + Integer.parseInt(inputArray[highValue]);
+                    inputArray = shortenInputArray(inputArray,c,i-1,2,i,highValue);
                     break;
                 }
                 if (i == inputArray.length-1){
@@ -165,7 +153,7 @@ public class calculate {
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("-")==0){
                     int c = Integer.parseInt(inputArray[i-1]) - Integer.parseInt(inputArray[i+1]);
-                    inputArray = shortenInputArray(inputArray,c,i-1);
+                    inputArray = shortenInputArray(inputArray,c,i-1,2,i,i+1);
                     break;
                 }
                 if (i == inputArray.length-1){
@@ -176,30 +164,14 @@ public class calculate {
         return inputArray;
     }
 
-
-    private String[] shortenInputArray(String[] inputArray,int resultNumber, int replaceLocation){
-        String[] tempArray = new String[inputArray.length-2];
-        int tempHold = 0;
-        for (int i = 0; i < tempArray.length; i++){
-            if (i == replaceLocation){
-                tempArray[i] = String.valueOf(resultNumber);
-                tempHold+=2;
-            } else {
-                tempArray[i] = inputArray[tempHold];
-                tempHold++;
-            }
-        }
-        return tempArray;
-    }
-
-    private String[] shortenInputArray(String[] inputArray,int resultNumber, int replaceLocation, int shortenAmount){
-        String[] tempArray = new String[inputArray.length-shortenAmount];
+    private String[] shortenInputArray(String[] inputArray,int resultNumber, int replaceLocation, int shortenAmount) {
+        String[] tempArray = new String[inputArray.length - shortenAmount];
         shortenAmount++;
         int tempHold = 0;
-        for (int i = 0; i < tempArray.length; i++){
-            if (i == replaceLocation){
+        for (int i = 0; i < tempArray.length; i++) {
+            if (i == replaceLocation) {
                 tempArray[i] = String.valueOf(resultNumber);
-                tempHold+=shortenAmount;
+                tempHold += shortenAmount;
             } else {
                 tempArray[i] = inputArray[tempHold];
                 tempHold++;
@@ -207,6 +179,22 @@ public class calculate {
         }
         inputArray = tempArray;
         return inputArray;
+    }
+
+    private String[] shortenInputArray(String[] inputArray,int resultNumber, int replaceLocation, int shortenAmount, int skip, int high){
+        String[] tempArray = new String[inputArray.length-shortenAmount];
+        int tempHold = 0;
+        for (int i = 0; i < tempArray.length; i++){
+            if (i == replaceLocation){
+                tempArray[i] = String.valueOf(resultNumber);
+            } else {
+                if ((i != skip) && (i != high)) {
+                    tempArray[i] = inputArray[tempHold];
+                }
+                tempHold++;
+            }
+        }
+        return tempArray;
     }
 
     private String printArray(String[] inputArray){
