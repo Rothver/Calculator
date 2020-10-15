@@ -2,6 +2,8 @@ package calculation;
 
 import java.util.Arrays;
 
+import org.graalvm.compiler.nodes.ValueNode;
+
 public class calculate {
     String[] globalInArray;
     char[] pemdasArray = {'p','e','m','d','a','s'};
@@ -189,7 +191,23 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("+")==0){
-                    if (!Character.isAlphabetic(inputArray[i-1].charAt(0))){
+                    try{
+                        if (inputArray[i-2].compareTo("-")==0){
+                            int valueOne = Integer.parseInt(inputArray[i-2] + inputArray[i-1]);
+                        }
+                    } catch (Exception e){
+                        int valueOne = Integer.parseInt(inputArray[i-1]);
+                    }
+
+                    try {
+                        if (inputArray[i+1].compareTo("-")==0){
+                            int valueTwo = Integer.praseInt(inputArray[i+1] + inputArray[i+2]);
+                        }
+                    } catch (Exception e) {
+                        int valueTwo = Integer.praseInt(inputArray[i+1]);
+                    }
+
+                    /*if (!Character.isAlphabetic(inputArray[i-1].charAt(0))){
                         //issue is high value not properly breaking when out of range
                         int highValue = i+1;
                         while (!Character.isDigit(inputArray[highValue].charAt(0))){
@@ -197,8 +215,10 @@ public class calculate {
                             if (highValue > inputArray.length-1){
                                 return inputArray;
                             }
-                        }
-                        int c = Integer.parseInt(inputArray[i-1]) + Integer.parseInt(inputArray[highValue]);
+                        } */
+                        int c = valueOne + valueTwo;
+
+                        //rework shorten Functions to handle negative numbers (make more dynamic?)
                         inputArray = shortenInputArray(inputArray,c,i-1, highValue-1,highValue);
                         break;
 
@@ -209,7 +229,7 @@ public class calculate {
                 }
             }
         }
-        return inputArray;
+        
     }
 
     private String[] doSubtraction(String[] inputArray){
@@ -217,7 +237,25 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("-")==0){
-                    int c = Integer.parseInt(inputArray[i-1]) - Integer.parseInt(inputArray[i+1]);
+                    try{
+                        if (inputArray[i-2].compareTo("-")==0){
+                            int valueOne = Integer.parseInt(inputArray[i-2] + inputArray[i-1]);
+                        }
+                    } catch (Exception e){
+                        int valueOne = Integer.parseInt(inputArray[i-1]);
+                    }
+
+                    try {
+                        if (inputArray[i+1].compareTo("-")==0){
+                            int valueTwo = Integer.praseInt(inputArray[i+1] + inputArray[i+2]);
+                        }
+                    } catch (Exception e) {
+                        int valueTwo = Integer.praseInt(inputArray[i+1]);
+                    }
+
+                    int c = valueOne - valueTwo;
+
+                    //rework shorten Functions to handle negative numbers (make more dynamic?)
                     inputArray = shortenInputArray(inputArray,c,i-1, i,i+1);
                     break;
                 }
