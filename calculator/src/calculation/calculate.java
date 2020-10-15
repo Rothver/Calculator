@@ -16,6 +16,10 @@ public class calculate {
     }
 
     private String[] findSolution(String[] inputArray){
+        if (inputArray.length < 3){
+            return inputArray;
+        }
+        
         for (char c : pemdasArray) {
             inputArray = parseArray(c, inputArray);
         }
@@ -80,8 +84,26 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("^")==0){
-                    int result = (int)Math.pow(Double.parseDouble(inputArray[i-1]),Double.parseDouble(inputArray[i+1]));
-                    inputArray = shortenInputArray(inputArray, result,i-1, i,i+1);
+                    try{
+                        if (inputArray[i-2].compareTo("-")==0){
+                            Double baseValue = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
+                        }
+                    } catch (Exception e){
+                        Double baseValue = Double.parseDouble(inputArray[i-1]);
+                    }
+
+                    try {
+                        if (inputArray[i+1].compareTo("-")==0){
+                            Double pow = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
+                        }
+                    } catch (Exception e) {
+                        Double pow = Double.parseDouble(inputArray[i+1]);
+                    }
+
+                    int result = (int)Math.pow(baseValue,pow));
+
+                    //rework shorten Functions to handle negative numbers (make more dynamic?)
+                    inputArray = shortenInputArray(inputArray, result, i-1, i,i+1);
                     break;
                 }
                 if (i == inputArray.length-1){
@@ -97,7 +119,25 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("*")==0){
-                    int c = Integer.parseInt(inputArray[i-1]) * Integer.parseInt(inputArray[i+1]);
+                    try{
+                        if (inputArray[i-2].compareTo("-")==0){
+                            int valueOne = Integer.parseInt(inputArray[i-2] + inputArray[i-1]);
+                        }
+                    } catch (Exception e){
+                        int valueOne = Integer.parseInt(inputArray[i-1]);
+                    }
+
+                    try {
+                        if (inputArray[i+1].compareTo("-")==0){
+                            int valueTwo = Integer.praseInt(inputArray[i+1] + inputArray[i+2]);
+                        }
+                    } catch (Exception e) {
+                        int valueTwo = Integer.praseInt(inputArray[i+1]);
+                    }
+
+                    int c = valueOne * valueTwo;
+
+                    //rework shorten Functions to handle negative numbers (make more dynamic?)
                     inputArray = shortenInputArray(inputArray,c,i-1, i,i+1);
                     break;
                 }
@@ -114,7 +154,25 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("/")==0){
-                    int c = Integer.parseInt(inputArray[i-1]) / Integer.parseInt(inputArray[i+1]);
+                    try{
+                        if (inputArray[i-2].compareTo("-")==0){
+                            int valueOne = Integer.parseInt(inputArray[i-2] + inputArray[i-1]);
+                        }
+                    } catch (Exception e){
+                        int valueOne = Integer.parseInt(inputArray[i-1]);
+                    }
+
+                    try {
+                        if (inputArray[i+1].compareTo("-")==0){
+                            int valueTwo = Integer.praseInt(inputArray[i+1] + inputArray[i+2]);
+                        }
+                    } catch (Exception e) {
+                        int valueTwo = Integer.praseInt(inputArray[i+1]);
+                    }
+
+                    int c = valueOne / valueTwo;
+
+                    //rework shorten Functions to handle negative numbers (make more dynamic?)
                     inputArray = shortenInputArray(inputArray,c,i-1, i,i+1);
                     break;
                 }
