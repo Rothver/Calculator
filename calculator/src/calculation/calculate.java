@@ -102,7 +102,7 @@ public class calculate {
                         Double pow = Double.parseDouble(inputArray[i+1]);
                     }
 
-                    int result = (int)Math.pow(baseValue,pow));
+                    int result = (int)Math.pow(baseValue,pow);
 
                     //rework shorten Functions to handle negative numbers (make more dynamic?)
                     inputArray = shortenInputArray(inputArray, result, i-1, i,i+1);
@@ -229,8 +229,6 @@ public class calculate {
                 }
             }
         }
-        
-    }
 
     private String[] doSubtraction(String[] inputArray){
         boolean repeat = true;
