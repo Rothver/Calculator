@@ -2,8 +2,6 @@ package calculation;
 
 import java.util.Arrays;
 
-import org.graalvm.compiler.nodes.ValueNode;
-
 public class calculate {
     String[] globalInArray;
     char[] pemdasArray = {'p','e','m','d','a','s'};
@@ -86,20 +84,22 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("^")==0){
+                    Double baseValue = 0.0;
+                    Double pow = 0.0;
                     try{
                         if (inputArray[i-2].compareTo("-")==0){
-                            Double baseValue = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
+                            baseValue = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
                         }
                     } catch (Exception e){
-                        Double baseValue = Double.parseDouble(inputArray[i-1]);
+                        baseValue = Double.parseDouble(inputArray[i-1]);
                     }
 
                     try {
                         if (inputArray[i+1].compareTo("-")==0){
-                            Double pow = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
+                            pow = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
                         }
                     } catch (Exception e) {
-                        Double pow = Double.parseDouble(inputArray[i+1]);
+                        pow = Double.parseDouble(inputArray[i+1]);
                     }
 
                     int result = (int)Math.pow(baseValue,pow);
@@ -121,20 +121,22 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("*")==0){
+                    int valueOne = 0;
+                    int valueTwo = 0;
                     try{
                         if (inputArray[i-2].compareTo("-")==0){
-                            int valueOne = Integer.parseInt(inputArray[i-2] + inputArray[i-1]);
+                            valueOne = Integer.parseInt(inputArray[i-2] + inputArray[i-1]);
                         }
                     } catch (Exception e){
-                        int valueOne = Integer.parseInt(inputArray[i-1]);
+                        valueOne = Integer.parseInt(inputArray[i-1]);
                     }
 
                     try {
                         if (inputArray[i+1].compareTo("-")==0){
-                            int valueTwo = Integer.praseInt(inputArray[i+1] + inputArray[i+2]);
+                            valueTwo = Integer.parseInt(inputArray[i+1] + inputArray[i+2]);
                         }
                     } catch (Exception e) {
-                        int valueTwo = Integer.praseInt(inputArray[i+1]);
+                        valueTwo = Integer.parseInt(inputArray[i+1]);
                     }
 
                     int c = valueOne * valueTwo;
@@ -156,20 +158,22 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("/")==0){
+                    int valueOne = 0;
+                    int valueTwo = 0;
                     try{
                         if (inputArray[i-2].compareTo("-")==0){
-                            int valueOne = Integer.parseInt(inputArray[i-2] + inputArray[i-1]);
+                            valueOne = Integer.parseInt(inputArray[i-2] + inputArray[i-1]);
                         }
                     } catch (Exception e){
-                        int valueOne = Integer.parseInt(inputArray[i-1]);
+                        valueOne = Integer.parseInt(inputArray[i-1]);
                     }
 
                     try {
                         if (inputArray[i+1].compareTo("-")==0){
-                            int valueTwo = Integer.praseInt(inputArray[i+1] + inputArray[i+2]);
+                            valueTwo = Integer.parseInt(inputArray[i+1] + inputArray[i+2]);
                         }
                     } catch (Exception e) {
-                        int valueTwo = Integer.praseInt(inputArray[i+1]);
+                        valueTwo = Integer.parseInt(inputArray[i+1]);
                     }
 
                     int c = valueOne / valueTwo;
@@ -191,20 +195,23 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("+")==0){
+                    int valueOne = 0;
+                    int valueTwo = 0;
+
                     try{
                         if (inputArray[i-2].compareTo("-")==0){
-                            int valueOne = Integer.parseInt(inputArray[i-2] + inputArray[i-1]);
+                            valueOne = Integer.parseInt(inputArray[i-2] + inputArray[i-1]);
                         }
                     } catch (Exception e){
-                        int valueOne = Integer.parseInt(inputArray[i-1]);
+                        valueOne = Integer.parseInt(inputArray[i-1]);
                     }
 
                     try {
                         if (inputArray[i+1].compareTo("-")==0){
-                            int valueTwo = Integer.praseInt(inputArray[i+1] + inputArray[i+2]);
+                            valueTwo = Integer.parseInt(inputArray[i+1] + inputArray[i+2]);
                         }
                     } catch (Exception e) {
-                        int valueTwo = Integer.praseInt(inputArray[i+1]);
+                        valueTwo = Integer.parseInt(inputArray[i+1]);
                     }
 
                     /*if (!Character.isAlphabetic(inputArray[i-1].charAt(0))){
@@ -219,15 +226,16 @@ public class calculate {
                         int c = valueOne + valueTwo;
 
                         //rework shorten Functions to handle negative numbers (make more dynamic?)
-                        inputArray = shortenInputArray(inputArray,c,i-1, highValue-1,highValue);
+                        inputArray = shortenInputArray(inputArray,c,i-1, i,i+1);
                         break;
 
                     }
-                }
-                if (i == inputArray.length-1){
-                    repeat = false;
+                    if (i == inputArray.length-1){
+                        repeat = false;
+                    }
                 }
             }
+            return inputArray;
         }
 
     private String[] doSubtraction(String[] inputArray){
@@ -235,20 +243,23 @@ public class calculate {
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
                 if (inputArray[i].compareTo("-")==0){
+                    int valueOne = 0;
+                    int valueTwo = 0;
+
                     try{
                         if (inputArray[i-2].compareTo("-")==0){
-                            int valueOne = Integer.parseInt(inputArray[i-2] + inputArray[i-1]);
+                            valueOne = Integer.parseInt(inputArray[i-2] + inputArray[i-1]);
                         }
                     } catch (Exception e){
-                        int valueOne = Integer.parseInt(inputArray[i-1]);
+                        valueOne = Integer.parseInt(inputArray[i-1]);
                     }
 
                     try {
                         if (inputArray[i+1].compareTo("-")==0){
-                            int valueTwo = Integer.praseInt(inputArray[i+1] + inputArray[i+2]);
+                            valueTwo = Integer.parseInt(inputArray[i+1] + inputArray[i+2]);
                         }
                     } catch (Exception e) {
-                        int valueTwo = Integer.praseInt(inputArray[i+1]);
+                        valueTwo = Integer.parseInt(inputArray[i+1]);
                     }
 
                     int c = valueOne - valueTwo;
