@@ -2,19 +2,37 @@ package calculation;
 
 import java.util.Arrays;
 
+
 public class calculate {
+    //Global Array is the input; holds the base arithmatic 
     String[] globalInArray;
+    //Just used as a way to regulate what gets called and the order
     char[] pemdasArray = {'p','e','m','d','a','s'};
 
+    /**
+     * Takes the desired string of math to solve and splits it based on spaces
+     * Does not do anything else though
+     * @param inputString
+     */
     public calculate(String inputString){
         this.globalInArray = inputString.split(" ");
     }
 
+    /**
+     * Begins process of solving the math (formally starts it)
+     * @return Solution as one string
+     */
     public String startSolution() {
         globalInArray = findSolution(globalInArray);
         return printArray(globalInArray);
     }
 
+    /**
+     * Finds the solution to the input array
+     * Will quit if there are less than 3 items in the input array
+     * @param inputArray
+     * @return inputArray
+     */
     private String[] findSolution(String[] inputArray){
         if (inputArray.length < 3){
             return inputArray;
@@ -26,6 +44,13 @@ public class calculate {
         return inputArray;
     }
 
+    /**
+     * Goes through each of the different operations possible (or desired)
+     * Returns the resulting input array after each operation is called
+     * @param symbol
+     * @param inputArray
+     * @return inputArray
+     */
     private String[] parseArray(char symbol, String[] inputArray) {
         switch (symbol) {
             case 'p':
@@ -52,6 +77,13 @@ public class calculate {
         return inputArray;
     }
 
+    /**
+     * Looks through the given input for parentheticals
+     * When one is found, it passes that to the find solution function
+     * The result is a shortened input array from the inner most "(" to ")" found
+     * @param inputArray
+     * @return inputArray
+     */
     private String[] findParenthesis(String[] inputArray){
         boolean repeat = true;
         int startLoc = -1;
@@ -65,7 +97,7 @@ public class calculate {
                     endLoc = i;
 
                     String temp = findSolution(Arrays.copyOfRange(inputArray, startLoc+1, endLoc))[0];
-                    inputArray = shortenInputArray(inputArray,Double.parseDouble(temp),startLoc,endLoc-startLoc);
+                    inputArray = shortenInputArray(inputArray,Double.parseDouble(temp),startLoc,endLoc);
                     break;
                 }
 
@@ -77,8 +109,12 @@ public class calculate {
         return inputArray;
     }
 
-    
-
+    /**
+     * Looks for and preforms the exponentional operation
+     * Returns the input array, after shortening it based on what was done 
+     * @param inputArray
+     * @return inputArray
+     */
     private String[] doExponents(String[] inputArray){
         boolean repeat = true;
         while(repeat){
@@ -104,8 +140,7 @@ public class calculate {
 
                     Double result = Math.pow(baseValue,pow);
 
-                    //rework shorten Functions to handle negative numbers (make more dynamic?)
-                    inputArray = shortenInputArray(inputArray, result, i-1, i,i+1);
+                    inputArray = shortenInputArray(inputArray,result,i-1,i+1);
                     break;
                 }
                 if (i == inputArray.length-1){
@@ -116,6 +151,12 @@ public class calculate {
         return inputArray;
     }
 
+    /**
+     * Looks for and preforms the multiplication operation
+     * Returns the input array after it has preformed the operation and shortened the array 
+     * @param inputArray
+     * @return inputArray
+     */
     private String[] doMultiplication(String[] inputArray){
         boolean repeat = true;
         while(repeat){
@@ -139,10 +180,9 @@ public class calculate {
                         valueTwo = Double.parseDouble(inputArray[i+1]);
                     }
 
-                    Double c = valueOne * valueTwo;
+                    Double result = valueOne * valueTwo;
 
-                    //rework shorten Functions to handle negative numbers (make more dynamic?)
-                    inputArray = shortenInputArray(inputArray,c,i-1, i,i+1);
+                    inputArray = shortenInputArray(inputArray,result,i-1,i+1);
                     break;
                 }
                 if (i == inputArray.length-1){
@@ -153,6 +193,12 @@ public class calculate {
         return inputArray;
     }
 
+    /**
+     * Looks for and preforms the division operation
+     * Returns the input array after it has preformed the operation and shortened the array
+     * @param inputArray
+     * @return inputArray
+     */
     private String[] doDivision(String[] inputArray){
         boolean repeat = true;
         while(repeat){
@@ -176,10 +222,10 @@ public class calculate {
                         valueTwo = Double.parseDouble(inputArray[i+1]);
                     }
 
-                    Double c = valueOne / valueTwo;
+                    Double result = valueOne / valueTwo;
 
                     //rework shorten Functions to handle negative numbers (make more dynamic?)
-                    inputArray = shortenInputArray(inputArray,c,i-1, i,i+1);
+                    inputArray = shortenInputArray(inputArray,result,i-1,i+1);
                     break;
                 }
                 if (i == inputArray.length-1){
@@ -190,6 +236,12 @@ public class calculate {
         return inputArray;
     }
 
+    /**
+     * Looks for and preforms the addition operation
+     * Returns the input array after it has preformed the operation and shortened the array
+     * @param inputArray
+     * @return inputArray
+     */
     private String[] doAddition(String[] inputArray){
         boolean repeat = true;
         while(repeat){
@@ -223,10 +275,9 @@ public class calculate {
                                 return inputArray;
                             }
                         } */
-                        Double c = valueOne + valueTwo;
+                        Double result = valueOne + valueTwo;
 
-                        //rework shorten Functions to handle negative numbers (make more dynamic?)
-                        inputArray = shortenInputArray(inputArray,c,i-1, i,i+1);
+                        inputArray = shortenInputArray(inputArray,result,i-1,i+1);
                         break;
 
                     }
@@ -238,6 +289,12 @@ public class calculate {
             return inputArray;
         }
 
+    /**
+     * Looks for and preforms the subtraction operation
+     * Returns the input array after it has preformed the operation and shortened the array
+     * @param inputArray
+     * @return inputArray
+     */
     private String[] doSubtraction(String[] inputArray){
         boolean repeat = true;
         while(repeat){
@@ -262,10 +319,10 @@ public class calculate {
                         valueTwo = Double.parseDouble(inputArray[i+1]);
                     }
 
-                    Double c = valueOne - valueTwo;
+                    Double result = valueOne - valueTwo;
 
                     //rework shorten Functions to handle negative numbers (make more dynamic?)
-                    inputArray = shortenInputArray(inputArray,c,i-1, i,i+1);
+                    inputArray = shortenInputArray(inputArray,result,i-1,i+1);
                     break;
                 }
                 if (i == inputArray.length-1){
@@ -276,39 +333,50 @@ public class calculate {
         return inputArray;
     }
 
-    private String[] shortenInputArray(String[] inputArray,Double resultNumber, int replaceLocation, int shortenAmount) {
+    /**
+     * Takes the input array and shortens it to the desired length based on the result
+     * @param inputArray
+     * @param resultNumber
+     * @param replaceLocLow
+     * @param replaceLocHigh
+     * @return inputArray
+     */
+    private String[] shortenInputArray(String[] inputArray, Double resultNumber, int replaceLocLow, int replaceLocHigh) {
+        int shortenAmount = 0;
+        boolean isNeg = false;
+        if (resultNumber < 0){
+            shortenAmount = replaceLocHigh - replaceLocLow + 1;
+            isNeg = true;
+        } else {
+            shortenAmount = replaceLocHigh - replaceLocLow;
+        }
         String[] tempArray = new String[inputArray.length - shortenAmount];
-        shortenAmount++;
+        
         int tempHold = 0;
-        for (int i = 0; i < tempArray.length; i++) {
-            if (i == replaceLocation) {
+        int i = 0;
+        while(i < tempArray.length){
+            if (i == replaceLocLow){
+                if (isNeg){
+                    tempArray[i] = "-";
+                    i++;
+                    tempHold++;
+                }
                 tempArray[i] = String.valueOf(resultNumber);
-                tempHold += shortenAmount;
-            } else {
+            } else{
                 tempArray[i] = inputArray[tempHold];
                 tempHold++;
             }
+            i++;
         }
         inputArray = tempArray;
         return inputArray;
     }
 
-    private String[] shortenInputArray(String[] inputArray, Double resultNumber, int replaceLocation, int skip, int high){
-        String[] tempArray = new String[inputArray.length- 2];
-        int tempHold = 0;
-        for (int i = 0; i < tempArray.length; i++){
-            if (i == replaceLocation){
-                tempArray[i] = String.valueOf(resultNumber);
-            } else {
-                if ((i != skip) && (i != high)) {
-                    tempArray[i] = inputArray[tempHold];
-                }
-            }
-            tempHold++;
-        }
-        return tempArray;
-    }
-
+    /**
+     * Takes the current input array and changes it from an array into a single string
+     * @param inputArray
+     * @return solution string
+     */
     private String printArray(String[] inputArray){
         StringBuilder returnString = new StringBuilder();
         for (String x: inputArray){
