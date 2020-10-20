@@ -8,7 +8,7 @@ public class run {
     calculate calculator;
 
     public run(){
-        calculator = new calculate("1 + - 1");
+        calculator = new calculate("1 * - 1");
     }
 
     public static void main (String args[]){

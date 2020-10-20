@@ -40,6 +40,10 @@ public class calculate {
         
         for (char c : pemdasArray) {
             inputArray = parseArray(c, inputArray);
+            
+            if (inputArray.length < 3){
+                return inputArray;
+            }
         }
         return inputArray;
     }
@@ -176,6 +180,7 @@ public class calculate {
                     int replaceLocHigh = 0;
 
                     try{
+                        
                         if (inputArray[i-2].compareTo("-")==0){
                             valueOne = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
                             replaceLocLow = i - 2;
@@ -381,7 +386,7 @@ public class calculate {
         int shortenAmount = 0;
         boolean isNeg = false;
         if (resultNumber < 0){
-            shortenAmount = replaceLocHigh - replaceLocLow + 1;
+            shortenAmount = replaceLocHigh - replaceLocLow - 1;
             isNeg = true;
         } else {
             shortenAmount = replaceLocHigh - replaceLocLow;
@@ -397,7 +402,7 @@ public class calculate {
                     i++;
                     tempHold++;
                 }
-                tempArray[i] = String.valueOf(resultNumber);
+                tempArray[i] = String.valueOf(Math.abs(resultNumber));
             } else{
                 tempArray[i] = inputArray[tempHold];
                 tempHold++;
