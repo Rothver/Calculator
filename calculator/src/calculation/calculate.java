@@ -122,25 +122,32 @@ public class calculate {
                 if (inputArray[i].compareTo("^")==0){
                     Double baseValue = 0.0;
                     Double pow = 0.0;
+                    int replaceLocLow = 0;
+                    int replaceLocHigh = 0;
+
                     try{
                         if (inputArray[i-2].compareTo("-")==0){
                             baseValue = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
+                            replaceLocLow = i-2;
                         }
                     } catch (Exception e){
                         baseValue = Double.parseDouble(inputArray[i-1]);
+                        replaceLocLow = i - 1;
                     }
 
                     try {
                         if (inputArray[i+1].compareTo("-")==0){
                             pow = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
+                            replaceLocHigh = i + 2;
                         }
                     } catch (Exception e) {
                         pow = Double.parseDouble(inputArray[i+1]);
+                        replaceLocLow = i + 1;
                     }
 
                     Double result = Math.pow(baseValue,pow);
 
-                    inputArray = shortenInputArray(inputArray,result,i-1,i+1);
+                    inputArray = shortenInputArray(inputArray,result,replaceLocLow,replaceLocHigh);
                     break;
                 }
                 if (i == inputArray.length-1){
@@ -164,25 +171,33 @@ public class calculate {
                 if (inputArray[i].compareTo("*")==0){
                     Double valueOne = 0.0;
                     Double valueTwo = 0.0;
+
+                    int replaceLocLow = 0;
+                    int replaceLocHigh = 0;
+
                     try{
                         if (inputArray[i-2].compareTo("-")==0){
                             valueOne = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
+                            replaceLocLow = i - 2;
                         }
                     } catch (Exception e){
                         valueOne = Double.parseDouble(inputArray[i-1]);
+                        replaceLocHigh = i - 1;
                     }
 
                     try {
                         if (inputArray[i+1].compareTo("-")==0){
                             valueTwo = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
+                            replaceLocHigh = i + 2;
                         }
                     } catch (Exception e) {
                         valueTwo = Double.parseDouble(inputArray[i+1]);
+                        replaceLocHigh = i + 1;
                     }
 
                     Double result = valueOne * valueTwo;
 
-                    inputArray = shortenInputArray(inputArray,result,i-1,i+1);
+                    inputArray = shortenInputArray(inputArray,result,replaceLocLow,replaceLocHigh);
                     break;
                 }
                 if (i == inputArray.length-1){
@@ -206,26 +221,34 @@ public class calculate {
                 if (inputArray[i].compareTo("/")==0){
                     Double valueOne = 0.0;
                     Double valueTwo = 0.0;
+
+                    int replaceLocLow = 0;
+                    int replaceLocHigh = 0;
+
                     try{
                         if (inputArray[i-2].compareTo("-")==0){
                             valueOne = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
+                            replaceLocLow = i - 2;
                         }
                     } catch (Exception e){
                         valueOne = Double.parseDouble(inputArray[i-1]);
+                        replaceLocLow = i -1; 
                     }
 
                     try {
                         if (inputArray[i+1].compareTo("-")==0){
                             valueTwo = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
+                            replaceLocHigh = i + 2;
                         }
                     } catch (Exception e) {
                         valueTwo = Double.parseDouble(inputArray[i+1]);
+                        replaceLocHigh = i + 1;
                     }
 
                     Double result = valueOne / valueTwo;
 
                     //rework shorten Functions to handle negative numbers (make more dynamic?)
-                    inputArray = shortenInputArray(inputArray,result,i-1,i+1);
+                    inputArray = shortenInputArray(inputArray,result,replaceLocLow,replaceLocHigh);
                     break;
                 }
                 if (i == inputArray.length-1){
@@ -250,20 +273,27 @@ public class calculate {
                     Double valueOne = 0.0;
                     Double valueTwo = 0.0;
 
+                    int replaceLocLow = 0;
+                    int replaceLocHigh = 0;
+
                     try{
                         if (inputArray[i-2].compareTo("-")==0){
                             valueOne = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
+                            replaceLocLow = i - 2;
                         }
                     } catch (Exception e){
                         valueOne = Double.parseDouble(inputArray[i-1]);
+                        replaceLocLow = i - 1;
                     }
 
                     try {
                         if (inputArray[i+1].compareTo("-")==0){
                             valueTwo = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
+                            replaceLocHigh = i + 2;
                         }
                     } catch (Exception e) {
                         valueTwo = Double.parseDouble(inputArray[i+1]);
+                        replaceLocHigh = i + 1;
                     }
 
                     /*if (!Character.isAlphabetic(inputArray[i-1].charAt(0))){
@@ -277,7 +307,7 @@ public class calculate {
                         } */
                         Double result = valueOne + valueTwo;
 
-                        inputArray = shortenInputArray(inputArray,result,i-1,i+1);
+                        inputArray = shortenInputArray(inputArray,result,replaceLocLow,replaceLocHigh);
                         break;
 
                     }
@@ -303,26 +333,32 @@ public class calculate {
                     Double valueOne = 0.0;
                     Double valueTwo = 0.0;
 
+                    int replaceLocLow = 0;
+                    int replaceLocHigh = 0;
                     try{
                         if (inputArray[i-2].compareTo("-")==0){
                             valueOne = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
+                            replaceLocLow = i - 2;
                         }
                     } catch (Exception e){
                         valueOne = Double.parseDouble(inputArray[i-1]);
+                        replaceLocLow = i - 1;
                     }
 
                     try {
                         if (inputArray[i+1].compareTo("-")==0){
                             valueTwo = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
+                            replaceLocHigh = i + 2;
                         }
                     } catch (Exception e) {
                         valueTwo = Double.parseDouble(inputArray[i+1]);
+                        replaceLocHigh = i + 1;
                     }
 
                     Double result = valueOne - valueTwo;
 
                     //rework shorten Functions to handle negative numbers (make more dynamic?)
-                    inputArray = shortenInputArray(inputArray,result,i-1,i+1);
+                    inputArray = shortenInputArray(inputArray,result,replaceLocLow,replaceLocHigh);
                     break;
                 }
                 if (i == inputArray.length-1){
