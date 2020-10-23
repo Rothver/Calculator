@@ -40,7 +40,7 @@ public class calculate {
         
         for (char c : pemdasArray) {
             inputArray = parseArray(c, inputArray);
-            
+
             if (inputArray.length < 3){
                 return inputArray;
             }
@@ -133,6 +133,9 @@ public class calculate {
                         if (inputArray[i-2].compareTo("-")==0){
                             baseValue = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
                             replaceLocLow = i-2;
+                        } else {
+                            baseValue = Double.parseDouble(inputArray[i-1]);
+                            replaceLocLow = i - 1;
                         }
                     } catch (Exception e){
                         baseValue = Double.parseDouble(inputArray[i-1]);
@@ -143,6 +146,9 @@ public class calculate {
                         if (inputArray[i+1].compareTo("-")==0){
                             pow = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
                             replaceLocHigh = i + 2;
+                        } else {
+                            pow = Double.parseDouble(inputArray[i+1]);
+                            replaceLocLow = i + 1;
                         }
                     } catch (Exception e) {
                         pow = Double.parseDouble(inputArray[i+1]);
@@ -184,6 +190,9 @@ public class calculate {
                         if (inputArray[i-2].compareTo("-")==0){
                             valueOne = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
                             replaceLocLow = i - 2;
+                        } else {
+                            valueOne = Double.parseDouble(inputArray[i-1]);
+                            replaceLocHigh = i - 1;
                         }
                     } catch (Exception e){
                         valueOne = Double.parseDouble(inputArray[i-1]);
@@ -194,6 +203,9 @@ public class calculate {
                         if (inputArray[i+1].compareTo("-")==0){
                             valueTwo = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
                             replaceLocHigh = i + 2;
+                        } else {
+                            valueTwo = Double.parseDouble(inputArray[i+1]);
+                            replaceLocHigh = i + 1;
                         }
                     } catch (Exception e) {
                         valueTwo = Double.parseDouble(inputArray[i+1]);
@@ -234,6 +246,9 @@ public class calculate {
                         if (inputArray[i-2].compareTo("-")==0){
                             valueOne = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
                             replaceLocLow = i - 2;
+                        } else {
+                            valueOne = Double.parseDouble(inputArray[i-1]);
+                            replaceLocLow = i -1; 
                         }
                     } catch (Exception e){
                         valueOne = Double.parseDouble(inputArray[i-1]);
@@ -244,6 +259,9 @@ public class calculate {
                         if (inputArray[i+1].compareTo("-")==0){
                             valueTwo = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
                             replaceLocHigh = i + 2;
+                        } else {
+                            valueTwo = Double.parseDouble(inputArray[i+1]);
+                            replaceLocHigh = i + 1;
                         }
                     } catch (Exception e) {
                         valueTwo = Double.parseDouble(inputArray[i+1]);
@@ -285,6 +303,9 @@ public class calculate {
                         if (inputArray[i-2].compareTo("-")==0){
                             valueOne = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
                             replaceLocLow = i - 2;
+                        } else {
+                            valueOne = Double.parseDouble(inputArray[i-1]);
+                            replaceLocLow = i - 1;
                         }
                     } catch (Exception e){
                         valueOne = Double.parseDouble(inputArray[i-1]);
@@ -295,6 +316,9 @@ public class calculate {
                         if (inputArray[i+1].compareTo("-")==0){
                             valueTwo = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
                             replaceLocHigh = i + 2;
+                        } else {
+                            valueTwo = Double.parseDouble(inputArray[i+1]);
+                            replaceLocHigh = i + 1;
                         }
                     } catch (Exception e) {
                         valueTwo = Double.parseDouble(inputArray[i+1]);
@@ -344,6 +368,9 @@ public class calculate {
                         if (inputArray[i-2].compareTo("-")==0){
                             valueOne = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
                             replaceLocLow = i - 2;
+                        } else {
+                            valueOne = Double.parseDouble(inputArray[i-1]);
+                            replaceLocLow = i - 1;
                         }
                     } catch (Exception e){
                         valueOne = Double.parseDouble(inputArray[i-1]);
@@ -354,6 +381,9 @@ public class calculate {
                         if (inputArray[i+1].compareTo("-")==0){
                             valueTwo = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
                             replaceLocHigh = i + 2;
+                        } else {
+                            valueTwo = Double.parseDouble(inputArray[i+1]);
+                            replaceLocHigh = i + 1;
                         }
                     } catch (Exception e) {
                         valueTwo = Double.parseDouble(inputArray[i+1]);
@@ -400,9 +430,10 @@ public class calculate {
                 if (isNeg){
                     tempArray[i] = "-";
                     i++;
-                    tempHold++;
+                    tempHold += 2;
                 }
                 tempArray[i] = String.valueOf(Math.abs(resultNumber));
+                tempHold += 2;
             } else{
                 tempArray[i] = inputArray[tempHold];
                 tempHold++;
