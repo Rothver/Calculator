@@ -10,7 +10,7 @@ public class inputHandler {
     public inputHandler(){
     }
 
-    public void takeInput(String inputString){
+    public String[] takeInput(String inputString){
         formatedArray = new ArrayList<String>();
         String tempChar = "";
         for (int i = 0; i < inputString.length(); i++){
@@ -22,9 +22,11 @@ public class inputHandler {
                 tempChar += inputString.charAt(i);
             }
         }
+        formatedArray.add(tempChar);
+        return arrayListToArray(formatedArray);
     }
 
-    public static boolean doesItContain(char toTest,char[] storeArray){
+    private static boolean doesItContain(char toTest,char[] storeArray){
         for (char temp:storeArray){
             if (Character.compare(toTest, temp) == 0){
                 return true;
@@ -32,4 +34,14 @@ public class inputHandler {
         }
         return false;
     }
+
+    private static String[] arrayListToArray(ArrayList<String> inputArrayList){
+        String[] toReturn = new String[inputArrayList.size()];
+
+        for (int i = 0; i < inputArrayList.size(); i++){
+            toReturn[i] = inputArrayList.get(i);
+        }
+
+        return toReturn;
+    } 
 }

@@ -7,15 +7,15 @@ public class calculate {
     //Global Array is the input; holds the base arithmatic 
     String[] globalInArray;
     //Just used as a way to regulate what gets called and the order
-    char[] pemdasArray = {'p','e','m','d','a','s'};
+    char[] pemdasArray = {'p','e','m','a'};
 
     /**
      * Takes the desired string of math to solve and splits it based on spaces
      * Does not do anything else though
      * @param inputString
      */
-    public calculate(String inputString){
-        this.globalInArray = inputString.split(" ");
+    public calculate(String[] inputString){
+        this.globalInArray = inputString;
     }
 
     /**
@@ -64,16 +64,10 @@ public class calculate {
                 inputArray = doExponents(inputArray);
                 break;
             case 'm':
-                inputArray = doMultiplication(inputArray);
-                break;
-            case 'd':
-                inputArray = doDivision(inputArray);
+                inputArray = doMultDiv(inputArray);
                 break;
             case 'a':
-                inputArray = doAddition(inputArray);
-                break;
-            case 's':
-                inputArray = doSubtraction(inputArray);
+                inputArray = doAddSub(inputArray);
                 break;
             default:
                 break;
@@ -174,11 +168,11 @@ public class calculate {
      * @param inputArray
      * @return inputArray
      */
-    private String[] doMultiplication(String[] inputArray){
+    private String[] doMultDiv(String[] inputArray){
         boolean repeat = true;
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
-                if (inputArray[i].compareTo("*")==0){
+                if (inputArray[i].compareTo("*")==0 || inputArray[i].compareTo("/")==0){
                     Double valueOne = 0.0;
                     Double valueTwo = 0.0;
 
@@ -212,65 +206,13 @@ public class calculate {
                         replaceLocHigh = i + 1;
                     }
 
-                    Double result = valueOne * valueTwo;
-
-                    inputArray = shortenInputArray(inputArray,result,replaceLocLow,replaceLocHigh);
-                    break;
-                }
-                if (i == inputArray.length-1){
-                    repeat = false;
-                }
-            }
-        }
-        return inputArray;
-    }
-
-    /**
-     * Looks for and preforms the division operation
-     * Returns the input array after it has preformed the operation and shortened the array
-     * @param inputArray
-     * @return inputArray
-     */
-    private String[] doDivision(String[] inputArray){
-        boolean repeat = true;
-        while(repeat){
-            for(int i = 0; i < inputArray.length; i++){
-                if (inputArray[i].compareTo("/")==0){
-                    Double valueOne = 0.0;
-                    Double valueTwo = 0.0;
-
-                    int replaceLocLow = 0;
-                    int replaceLocHigh = 0;
-
-                    try{
-                        if (inputArray[i-2].compareTo("-")==0){
-                            valueOne = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
-                            replaceLocLow = i - 2;
-                        } else {
-                            valueOne = Double.parseDouble(inputArray[i-1]);
-                            replaceLocLow = i -1; 
-                        }
-                    } catch (Exception e){
-                        valueOne = Double.parseDouble(inputArray[i-1]);
-                        replaceLocLow = i -1; 
+                    Double result = 0.0;
+                    if (inputArray[i].compareTo("*")==0){
+                        result = valueOne * valueTwo;
+                    } else if (inputArray[i].compareTo("/")==0){
+                        result = valueOne / valueTwo;
                     }
 
-                    try {
-                        if (inputArray[i+1].compareTo("-")==0){
-                            valueTwo = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
-                            replaceLocHigh = i + 2;
-                        } else {
-                            valueTwo = Double.parseDouble(inputArray[i+1]);
-                            replaceLocHigh = i + 1;
-                        }
-                    } catch (Exception e) {
-                        valueTwo = Double.parseDouble(inputArray[i+1]);
-                        replaceLocHigh = i + 1;
-                    }
-
-                    Double result = valueOne / valueTwo;
-
-                    //rework shorten Functions to handle negative numbers (make more dynamic?)
                     inputArray = shortenInputArray(inputArray,result,replaceLocLow,replaceLocHigh);
                     break;
                 }
@@ -288,11 +230,11 @@ public class calculate {
      * @param inputArray
      * @return inputArray
      */
-    private String[] doAddition(String[] inputArray){
+    private String[] doAddSub(String[] inputArray){
         boolean repeat = true;
         while(repeat){
             for(int i = 0; i < inputArray.length; i++){
-                if (inputArray[i].compareTo("+")==0){
+                if (inputArray[i].compareTo("+")==0 || inputArray[i].compareTo("-")==0){
                     Double valueOne = 0.0;
                     Double valueTwo = 0.0;
 
@@ -334,7 +276,13 @@ public class calculate {
                                 return inputArray;
                             }
                         } */
-                        Double result = valueOne + valueTwo;
+
+                        Double result = 0.0;
+                        if (inputArray[i].compareTo("+")==0){
+                            result = valueOne + valueTwo;
+                        } else if (inputArray[i].compareTo("-")==0){
+                            result = valueOne - valueTwo;
+                        }                        
 
                         inputArray = shortenInputArray(inputArray,result,replaceLocLow,replaceLocHigh);
                         break;
@@ -347,62 +295,6 @@ public class calculate {
             }
             return inputArray;
         }
-
-    /**
-     * Looks for and preforms the subtraction operation
-     * Returns the input array after it has preformed the operation and shortened the array
-     * @param inputArray
-     * @return inputArray
-     */
-    private String[] doSubtraction(String[] inputArray){
-        boolean repeat = true;
-        while(repeat){
-            for(int i = 0; i < inputArray.length; i++){
-                if (inputArray[i].compareTo("-")==0){
-                    Double valueOne = 0.0;
-                    Double valueTwo = 0.0;
-
-                    int replaceLocLow = 0;
-                    int replaceLocHigh = 0;
-                    try{
-                        if (inputArray[i-2].compareTo("-")==0){
-                            valueOne = Double.parseDouble(inputArray[i-2] + inputArray[i-1]);
-                            replaceLocLow = i - 2;
-                        } else {
-                            valueOne = Double.parseDouble(inputArray[i-1]);
-                            replaceLocLow = i - 1;
-                        }
-                    } catch (Exception e){
-                        valueOne = Double.parseDouble(inputArray[i-1]);
-                        replaceLocLow = i - 1;
-                    }
-
-                    try {
-                        if (inputArray[i+1].compareTo("-")==0){
-                            valueTwo = Double.parseDouble(inputArray[i+1] + inputArray[i+2]);
-                            replaceLocHigh = i + 2;
-                        } else {
-                            valueTwo = Double.parseDouble(inputArray[i+1]);
-                            replaceLocHigh = i + 1;
-                        }
-                    } catch (Exception e) {
-                        valueTwo = Double.parseDouble(inputArray[i+1]);
-                        replaceLocHigh = i + 1;
-                    }
-
-                    Double result = valueOne - valueTwo;
-
-                    //rework shorten Functions to handle negative numbers (make more dynamic?)
-                    inputArray = shortenInputArray(inputArray,result,replaceLocLow,replaceLocHigh);
-                    break;
-                }
-                if (i == inputArray.length-1){
-                    repeat = false;
-                }
-            }
-        }
-        return inputArray;
-    }
 
     /**
      * Takes the input array and shortens it to the desired length based on the result
@@ -431,9 +323,10 @@ public class calculate {
                     tempArray[i] = "-";
                     i++;
                     tempHold += 2;
+                } else{
+                    tempArray[i] = String.valueOf(Math.abs(resultNumber));
+                    tempHold += 3;
                 }
-                tempArray[i] = String.valueOf(Math.abs(resultNumber));
-                tempHold += 2;
             } else{
                 tempArray[i] = inputArray[tempHold];
                 tempHold++;
